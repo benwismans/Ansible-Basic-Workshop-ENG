@@ -6,8 +6,7 @@ De workshop is zo opgezet, dat deze vanaf iedere plek verder afgemaakt kan worde
 ## Benodigdheden
 Voor deze workshop heb je nodig:
 - Laptop met een SSH client (bijvoorbeeld putty: https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
-- Een Linux server met SSH toegang en Ansible (wordt gegeven in de workshop)
-- Een Linux Azure VM (wordt gegeven in de workshop)
+- Een Linux server met SSH toegang en Ansible (in deze workshop de bastion server: du-bastion.westeurope.cloudapp.azure.com)
 - Sheet met account gegevens 
 
 ## Uitvoering
