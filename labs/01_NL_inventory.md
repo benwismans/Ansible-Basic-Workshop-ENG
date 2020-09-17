@@ -28,7 +28,7 @@ In het configuratie bestand ansible.cfg kan een alternatief pad geconfigueerd wo
 * .ansible.cfg (in de home directory
 * /etc/ansible/ansible.cfg
 
-Door een ansible.cfg in dezelfde directory te zetten als het playbook (welke we in een later lab aanmaken), worden alle default instellingen overruled door de instellingen in deze ansible.cfg. We laten de inventory wijzen naar ~/inventory (de ~ is een alias voor je home directory; de plek waar de inventory file is aangemaakt). Nu we toch bezig zijn, configureren we alvast de user waarmee we straks via Ansible inloggen op de Raspberry. Bij Raspberries is dat standaard de user: pi. Verder schakelen we host_key_checking uit. 
+Door een ansible.cfg in dezelfde directory te zetten als het playbook (welke we in een later lab aanmaken), worden alle default instellingen overruled door de instellingen in deze ansible.cfg. We laten de inventory wijzen naar ~/inventory (de ~ is een alias voor je home directory; de plek waar de inventory file is aangemaakt). Nu we toch bezig zijn, configureren we alvast de user waarmee we straks via Ansible inloggen op de client. Gebruik de gegevens van jouw user. Verder schakelen we host_key_checking uit. 
 
 * Maak een ansible.cfg aan:
 
