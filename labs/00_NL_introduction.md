@@ -1,16 +1,14 @@
 # Introductie
-Welkom bij de workshop Ansible-Pi. In deze workshop gaan we een Raspberry Pi inrichten met Ansible, zodat je deze kunt gebruiken als jumpstart voor in je eigen omgeving. Na de workshop is je Raspberry Pi gereed om aangesloten te worden in je netwerk, zodat je deze kunt gebruiken voor de ontwikkeling van je eigen Ansible playbooks. Je kunt er natuurlijk ook een demo mee geven aan je collega's. 
+Welkom bij de workshop Ansible-Basic. In deze workshop gaan we een Azure VM met Linux inrichten met Ansible, zodat je deze kunt gebruiken als jumpstart voor in je eigen omgeving. Na de workshop is je Linux VM nog een aantal dagen beschikbaar, zodat je deze kunt gebruiken voor de ontwikkeling van je eigen Ansible playbooks. Je kunt er natuurlijk ook een demo mee geven aan je collega's. 
 
-De workshop is zo opgezet, dat deze vanuit thuis (of op je werk) verder afgemaakt kan worden. Na **Lab 4** kun je de Raspberry gebruiken als Linux server met SSH toegang en Ansible.
+De workshop is zo opgezet, dat deze vanaf iedere plek verder afgemaakt kan worden. 
 
 ## Benodigdheden
 Voor deze workshop heb je nodig:
 - Laptop met een SSH client (bijvoorbeeld putty: https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
-- Een Linux server met SSH toegang en Ansible
-- Een Raspberry Pi
-- Sheet met account gegevens
-
-Elke Raspberry heeft een kleur codering rechtsboven. Controleer of de kleur codering overeen komt met de codering op je sheet (anders werken de inlog gegevens niet).
+- Een Linux server met SSH toegang en Ansible (wordt gegeven in de workshop)
+- Een Linux Azure VM (wordt gegeven in de workshop)
+- Sheet met account gegevens 
 
 ## Uitvoering
 - Alle acties worden uitgevoerd vanuit de home directory van de SSH server (tenzij anders aangegeven).
