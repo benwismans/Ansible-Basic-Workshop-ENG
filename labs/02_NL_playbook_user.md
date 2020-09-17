@@ -3,12 +3,12 @@ Een playbook is een beschrijving hoe een systeem ingericht zou moeten zijn. Dit 
 
 **Tip:** Probeer het playbook zo in te richten dat er geen changes meer worden gemaakt, wanneer het playbook voor de 2e maal uitgevoerd wordt. Daarnaast is het gebruikelijk om een playbook zodanig te maken dat deze meerdere malen uitgevoerd kan worden, zonder dat dit problemen geeft.
 
-In dit lab maken we een playbook voor het installeren van de public key voor SSH. Na het installeren van deze public key kun je met de private key (dus zonder wachtwoord) inloggen op de Raspberry Pi.
+In dit lab maken we een playbook voor het installeren van de public key voor SSH. Na het installeren van deze public key kun je met de private key (dus zonder wachtwoord) inloggen op de Client.
 
 **Tip:** In een productie omgeving levert het een beveiligings risico op, wanneer er geen Passphrase is geconfigueerd op de Private key. Het is daarom niet aan te raden om Private keys zonder een Passprhase te gebruiken in een productie omgeving. Om dit lab minder complex te maken, is de Passphrase voor de Private key leeg gelaten.
 
 ## Task 2.1: Playbook aanmaken
-In het playbook gaan we de module ``authorized_key`` gebruiken om de SSH public key op de Raspberry Pi te installeren. In de verborgen directory .ssh is de public en de private key voor geïnstalleerd.
+In het playbook gaan we de module ``authorized_key`` gebruiken om de SSH public key op de Client te installeren. In de verborgen directory .ssh is de public en de private key voor geïnstalleerd.
 
 * Controleer of de SSH keys zijn geïnstalleerd:
 
@@ -24,16 +24,16 @@ De file ``id_rsa.pub`` is de public key. De file ``id_rsa`` is de private key. M
 
   ``$ vi workshop.yml``
   
-* Vul het playbook met:
+* Vul het playbook met (let op dat je de goede nummer kiest van jouw user):
 
   ```
   ---
   - hosts: workshop
 
     tasks:
-    - name: "Ensure authorized key is installed for user pi"
+    - name: "Ensure authorized key is installed for user"
       authorized_key:
-        user: pi
+        user: userXX
         state: present
         key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
   ```
@@ -44,7 +44,7 @@ Als het goed is, valt op dat het playbook redelijk leesbaar is. Zelfs zonder ken
 * Het playbook zal uitgevoerd worden op alle clients in de groep ``workshop``.
 * Het playbook bestaat uit een enkele taak.
 * Met ``name`` wordt beschreven wat deze taak doet.
-* De module ``authorized_key`` wordt gebruikt om voor de ``user`` ``pi`` de ``key`` te installeren. Daarbij wordt de file ``~/.ssh/id_rsa.pub`` gebruikt.
+* De module ``authorized_key`` wordt gebruikt om voor de ``user`` ``userXX`` de ``key`` te installeren. Daarbij wordt de file ``~/.ssh/id_rsa.pub`` gebruikt.
 
 In de documentatie vind je meer details over de module ``authorized_key``. Zie https://docs.ansible.com/ansible/latest/modules/authorized_key_module.html.
 
@@ -58,33 +58,33 @@ In de documentatie vind je meer details over de module ``authorized_key``. Zie h
   PLAY [workshop] **********************************************************************************************************************************************************************************************************
 
   TASK [Gathering Facts] ***************************************************************************************************************************************************************************************************
-  ok: [pi]
+  ok: [client]
 
   TASK [Ensure authorized key is installed for user pi] ********************************************************************************************************************************************************************
-  changed: [pi] => (item=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCnZtlzLhYrZAIxTiiN/b5WaRAHaze4BecufyjpQkQ9QCSqglfxnKSERtrwQmes31FJPRNY2DWvzvSgV1cJHnyYWKFeWQJv6nVvSCFOpmtqbqPHuSVV1O5S3CLHrmLWtZ8CeBNawnAMBlaDzZ2h9duDED+Ecx/bYYJakcQXR++LpqQ1voYX8gwGLD8dBY3i+hgjZ/pA6ITM1PLVwNaHzUZ5uL3ne6/RyzsjCfK+cJdxt+OtN6QsGHJwrV3hX3mVcyZVE3Ta72/1asm3CzeQAYA3CwBdxqfAONYck8UZeh8N0VtTsX+g8nrPBozRv47nF4JhFjBG2N/u37MEixoN8skV user@host)
+  changed: [client] => (item=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCnZtlzLhYrZAIxTiiN/b5WaRAHaze4BecufyjpQkQ9QCSqglfxnKSERtrwQmes31FJPRNY2DWvzvSgV1cJHnyYWKFeWQJv6nVvSCFOpmtqbqPHuSVV1O5S3CLHrmLWtZ8CeBNawnAMBlaDzZ2h9duDED+Ecx/bYYJakcQXR++LpqQ1voYX8gwGLD8dBY3i+hgjZ/pA6ITM1PLVwNaHzUZ5uL3ne6/RyzsjCfK+cJdxt+OtN6QsGHJwrV3hX3mVcyZVE3Ta72/1asm3CzeQAYA3CwBdxqfAONYck8UZeh8N0VtTsX+g8nrPBozRv47nF4JhFjBG2N/u37MEixoN8skV user@host)
 
   PLAY RECAP ***************************************************************************************************************************************************************************************************************
   pi                         : ok=2    changed=1    unreachable=0    failed=0
   ```
 
 ## Task 2.3: Het playbook nogmaals starten
-Omdat nu de Authorized key voor SSH op de Raspberry Pi is geïnstalleerd, kun je zonder wachtwoord inloggen op de Raspberry pi.
+Omdat nu de Authorized key voor SSH op de Client is geïnstalleerd, kun je zonder wachtwoord inloggen op de Client.
 
-* Controleer of je zonder wachtwoord in kunt loggen (vervang ``<ipaddress>`` met het IP adres van je Raspberry Pi):
+* Controleer of je zonder wachtwoord in kunt loggen (vervang ``<hostname>`` met de hostname van je client):
   
-  ``$ ssh -l pi <ipaddress>`` 
+  ``$ ssh -l userXX <hostname>`` 
 
   ``` 
-  pi@raspberry:~ $ 
+  userXX@client:~ $ 
   ```
 
 * Log direct weer uit met ``exit``:
 
-  ``pi@raspberry:~ $ exit``
+  ``userXX@client:~ $ exit``
 
   ```
   logout
-  Connection to raspberry-pi closed.
+  Connection to client closed.
   ```
 
 * Start het playbook, maar zonder de parameter ``--ask-pass``:
@@ -96,13 +96,13 @@ Omdat nu de Authorized key voor SSH op de Raspberry Pi is geïnstalleerd, kun je
   PLAY [workshop] **********************************************************************************************************************************************************************************************************
 
   TASK [Gathering Facts] ***************************************************************************************************************************************************************************************************
-  ok: [pi]
+  ok: [client]
 
-  TASK [Ensure authorized key is installed for user pi] ********************************************************************************************************************************************************************
-  ok: [pi] => (item=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCnZtlzLhYrZAIxTiiN/b5WaRAHaze4BecufyjpQkQ9QCSqglfxnKSERtrwQmes31FJPRNY2DWvzvSgV1cJHnyYWKFeWQJv6nVvSCFOpmtqbqPHuSVV1O5S3CLHrmLWtZ8CeBNawnAMBlaDzZ2h9duDED+Ecx/bYYJakcQXR++LpqQ1voYX8gwGLD8dBY3i+hgjZ/pA6ITM1PLVwNaHzUZ5uL3ne6/RyzsjCfK+cJdxt+OtN6QsGHJwrV3hX3mVcyZVE3Ta72/1asm3CzeQAYA3CwBdxqfAONYck8UZeh8N0VtTsX+g8nrPBozRv47nF4JhFjBG2N/u37MEixoN8skV user@host)
+  TASK [Ensure authorized key is installed for user userXX] ********************************************************************************************************************************************************************
+  ok: [client] => (item=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCnZtlzLhYrZAIxTiiN/b5WaRAHaze4BecufyjpQkQ9QCSqglfxnKSERtrwQmes31FJPRNY2DWvzvSgV1cJHnyYWKFeWQJv6nVvSCFOpmtqbqPHuSVV1O5S3CLHrmLWtZ8CeBNawnAMBlaDzZ2h9duDED+Ecx/bYYJakcQXR++LpqQ1voYX8gwGLD8dBY3i+hgjZ/pA6ITM1PLVwNaHzUZ5uL3ne6/RyzsjCfK+cJdxt+OtN6QsGHJwrV3hX3mVcyZVE3Ta72/1asm3CzeQAYA3CwBdxqfAONYck8UZeh8N0VtTsX+g8nrPBozRv47nF4JhFjBG2N/u37MEixoN8skV user@host)
 
   PLAY RECAP ***************************************************************************************************************************************************************************************************************
-  pi                         : ok=2    changed=0    unreachable=0    failed=0
+  client                         : ok=2    changed=0    unreachable=0    failed=0
   ```
 
 Het playbook zal nu geen changes opleveren. De public key is immers al geïnstalleerd. Mocht je later de public key willen vervangen, kun je simpelweg een nieuwe genereren en deze via Ansible opnieuw deployen. Ansible herkent dat het bestand is gewijzigd en zal daarvoor een change genereren.
