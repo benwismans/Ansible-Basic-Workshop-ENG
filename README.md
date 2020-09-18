@@ -12,6 +12,5 @@ Dit lab is gebaseerd op Ansible 2.9. In dit lab wordt een Azure Virtual Machine 
 6. [Vault - Encryptie gebruiken](labs/06_NL_vault.md)
 
 ### Extra labs
-9. [Example - Windows 2016](labs/09_NL_Example_Windows-Server-2016.md)
 10. [Example - Linux server](labs/10_NL_Example_Linux-Server.md)
 - [Workshop thuis of op kantoor afmaken](labs/99_NL_Workshop_afmaken.md)
