@@ -10,11 +10,11 @@ In de inventory file wordt beschreven hoe Ansible je clients kan bereiken. Een A
 
   ``$ vi inventory``
 
-* Vul de inventory file met (Let op: vul op XX je nummer in van jouw user):
+* Vul de inventory file met (Let op: vul op XX je nummer in van jouw user/omgeving; user09 gebruikt dus du-ans-09a.westeurope.cloudapp.azure.com):
 
   ```
   [workshop]
-  client ansible_host=du-ans-XXa.westeurope.cloudapp.azure.com
+  client ansible_host=du-ans-12a.westeurope.cloudapp.azure.com
   ```
 
 ## Task 1.2: Ansible vertellen waar de inventory file staat
@@ -34,7 +34,7 @@ Door een ansible.cfg in dezelfde directory te zetten als het playbook (welke we 
 
   ``$ vi ansible.cfg``
 
-* Vul de ansible.cfg met:
+* Vul de ansible.cfg met (let weer op je usernummer!):
   ```
   [defaults]
   inventory = ~/inventory
