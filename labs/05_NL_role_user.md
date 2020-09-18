@@ -88,7 +88,6 @@ De ``user`` module verwacht het wachtwoord in SHA512 formaat.
   
   ```
   workshop@du-ans-09b's password: 
-  Linux raspberry 4.9.0-8-amd64 #1 SMP Debian 4.9.130-2 (2018-10-27) x86_64
   $
   ```
 
