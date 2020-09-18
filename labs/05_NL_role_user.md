@@ -14,7 +14,7 @@ Voor het aanmaken van een user kun je bijvoorbeeld zoeken op ``accounts``. De ro
 
 We gaan een Ansible Role gebruiken om een user account aan te maken. Doordat de tasks in de role al zijn geschreven hoef je alleen maar de role te installeren en met parameters de role aan te sturen.
 
-**Tip** De onderstaande acties worden weer uitgevoerd op de Bastion server (log dus uit je Raspberry).
+**Tip** De onderstaande acties worden weer uitgevoerd op de Bastion server (log dus uit je Client).
 
 * Installeer de role via Ansible Galaxy:
 
@@ -62,27 +62,27 @@ De ``user`` module verwacht het wachtwoord in SHA512 formaat.
 * Maak een nieuw playbook ``workshop-role.yml`` (vervang de hash met de hash uit task 5.2):
 
   ```
-  ---
-  - hosts: workshop
-    become: true
-    become_method: sudo
+---
+- hosts: workshop
+  become: true
+  become_method: sudo
 
-    vars:
-      account_groups:
-      - name: "workshop"
-      account_users:
-      - name: "workshop"
-        password: "$6$uj/GXuBze4eetOeT$ksVseNMTnsRdkVFqUyTICzxri9TeRnsqJyUZVRiiy6ChlDurXWsTkAOdPuSNOPJtPNnzkmrXzfx753hglmH5M/"
+  vars:
+    account_groups:
+    - name: "workshop"
+    account_users:
+    - name: "workshop"
+      password: "$6$uj/GXuBze4eetOeT$ksVseNMTnsRdkVFqUyTICzxri9TeRnsqJyUZVRiiy6ChlDurXWsTkAOdPuSNOPJtPNnzkmrXzfx753hglmH5M/"
 
-    roles:
-    - role: ontic.account
+  roles:
+  - role: ontic.account
   ```
 
 * Voer het playbook uit:
 
   ``$ ansible-playbook workshop-role.yml``
   
-* Controleer of de user is aangemaakt (vervang ``<ip address>`` door het IP adres van je Raspberry Pi):
+* Controleer of de user is aangemaakt met je eigen wachtwoord (vervang ``<hostname>`` door de hostname van je Client):
 
   ``$ ssh -l workshop <ip address>``
   
