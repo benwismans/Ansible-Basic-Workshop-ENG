@@ -84,7 +84,7 @@ De ``user`` module verwacht het wachtwoord in SHA512 formaat.
   
 * Controleer of de user is aangemaakt met je eigen wachtwoord (vervang ``<hostname>`` door de hostname van je Client):
 
-  ``$ ssh -l workshop <ip address>``
+  ``$ ssh -l workshop <hostname>``
   
   ```
   workshop@raspberry's password: 
