@@ -103,4 +103,8 @@ Ansible herkent zelf of een bestand encrypt is en zal deze automatisch decrypten
 
 **Tip:** Een mooie usecase voor Vault is het gebruik van SSL certificaten. Een SSL certificaat bestaat altijd uit een public en een private key, waarbij de private key (de naam zegt het al) beschermd dient te worden. Het is natuurlijk niet de bedoeling dat een private key in plain tekst in een Ansible script gezet wordt. Deze kun je daarom het beste dmv. Ansible Vault encrypten. Uiteindelijk belandt het certificaat natuurlijk wel unencrypted op het systeem.
 
+Klaar!
+
 Terug naar: [Inhoudsopgave](/README.md)
+
+Extra Lab: [Lab 10 - Linux](/labs/06_NL_vault.md)
