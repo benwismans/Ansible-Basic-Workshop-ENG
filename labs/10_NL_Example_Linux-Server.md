@@ -1,32 +1,32 @@
 # Lab 10: Example - Linux Server
 
-In dit lab gaan we een Linux server configureren.
+In dit lab gaan we een andere Linux server configureren. Alle ansible acties voer je uit op de du-ans-XXa, en de linux server die we gaan configureren is de du-ans-XXb. 
 
-Linux is het Operating System waarvoor verreweg de meeste Ansible modules te vinden zijn. Voor vrijwel elke uitdaging is wel een Ansible module (of role) te vinden. In dit lap gaan we in 3 stappen een webserver configureren én zelfs de web content installeren. 
+Linux is het Operating System waarvoor verreweg de meeste Ansible modules te vinden zijn. Voor vrijwel elke uitdaging is wel een Ansible module (of role) te vinden. In dit lab gaan we in 3 stappen een webserver configureren én zelfs de web content installeren. 
 
 ## Task 10.1: Inventory aanpassen
 
-Voer deze task uit op je Raspberry Pi.
+Voer deze task uit op je Client die inmiddels ansible server is: du-ans-XXa. We gaan acties uitvoeren op en andere client genaamd du-ans-XXb
 
-* Log in op je Raspberry Pi.
+* Log in op je Client.
 
-  ``$ ssh -l pi <ipaddress>`` 
+  ``$ ssh -l userXX <hostname>`` 
 
 * Als het goed is log je direct in (zonder wachtwoord):
 
   ``` 
-  pi@raspberry:~ $ 
+  [user01@du-ans-09a ~]$ 
   ```
 
 * Maak een inventory file:
 
   ``$ vi inventory``
 
-* Vul de inventory file met (vervang ``<ipaddress>`` door het IP adres van de switch):
+* Vul de inventory file met (vervang ``<hostname>`` door de hostname van je B client, bijvoorbeeld ansible_host=du-ans-09b.westeurope.cloudapp.azure.com):
 
   ```
   [linux]
-  linux-01 ansible_host=<ipaddress>
+  linux-XXb ansible_host=<hostname>
   ```
   
 * Maak een ansible.cfg aan:
@@ -38,21 +38,21 @@ Voer deze task uit op je Raspberry Pi.
   ```
   [defaults]
   inventory = ~/inventory
-  remote_user = workshop
+  remote_user = userXX
   
   host_key_checking = False
   ```
 
 ## Task 9.2: Verbinding testen
 
-Om zeker te zijn dat de inventory file ``inventory`` en de config file ``ansible.cfg`` correct zijn, voeren we een test uit met de ``adhoc`` module ``ping``. Ansible vraagt om een wachtwoord. Gebruik hiervoor het wachtwoord van het account ``workshop``.
+Om zeker te zijn dat de inventory file ``inventory`` en de config file ``ansible.cfg`` correct zijn, voeren we een test uit met de ``adhoc`` module ``ping``. Ansible vraagt om een wachtwoord. Gebruik hiervoor het wachtwoord van je user account ``userXX``.
 
 * Test de verbinding met de module ``ping``
 
   ``$ ansible -m ping linux --ask-pass``
   
   ```
-  linux-01 | SUCCESS => {
+  linux-09b | SUCCESS => {
     "changed": false,
     "ping": "pong"
   }
@@ -133,7 +133,7 @@ Met Ansible kun je eenvoudig content kopieën van je Ansible Engine naar de webs
   ```
       - name: Ensure content is installed in the webserver
         copy:
-          src: files/index.html
+          content: "Hello World! This is the Ansible Basic Workshop Extra Lab on the {{ ansible_facts.hostname }} Linux Server\n"
           dest: /var/www/html/index.html
           owner: apache
           group: apache
@@ -144,4 +144,4 @@ Met Ansible kun je eenvoudig content kopieën van je Ansible Engine naar de webs
 
   ``$ ansible-playbook linux.yml -k``
   
-* Open in je browser de url ``http://<ip address>`` (vervang ``<ipaddress>`` door het IP adres van de Linux server).
+* Open in je browser de url ``http://<hostname>`` (vervang ``<hostname>`` door het de hostname van de Linux server).
