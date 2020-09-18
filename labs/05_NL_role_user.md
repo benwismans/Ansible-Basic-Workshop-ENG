@@ -61,7 +61,7 @@ De ``user`` module verwacht het wachtwoord in SHA512 formaat.
 
 * Maak een nieuw playbook ``workshop-role.yml`` (vervang de hash met de hash uit task 5.2):
 
-  ```
+```
 ---
 - hosts: workshop
   become: true
@@ -76,7 +76,7 @@ De ``user`` module verwacht het wachtwoord in SHA512 formaat.
 
   roles:
   - role: ontic.account
-  ```
+```
 
 * Voer het playbook uit:
 
