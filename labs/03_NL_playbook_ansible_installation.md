@@ -12,7 +12,7 @@ Om Ansible goed te kunnen laten werken is het nodig om dependancies te installer
 
   ```
     - name: "Ensure all dependancies are installed"
-      apt:
+      yum:
         name: "{{ packages }}"
       vars:
         packages:
