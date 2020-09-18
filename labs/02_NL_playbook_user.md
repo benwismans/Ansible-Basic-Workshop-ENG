@@ -61,7 +61,7 @@ In de documentatie vind je meer details over de module ``authorized_key``. Zie h
   ok: [client]
 
   TASK [Ensure authorized key is installed for user user09] ********************************************************************************************************************************************************************
-  changed: [client] => (item=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCnZtlzLhYrZAIxTiiN/b5WaRAHaze4BecufyjpQkQ9QCSqglfxnKSERtrwQmes31FJPRNY2DWvzvSgV1cJHnyYWKFeWQJv6nVvSCFOpmtqbqPHuSVV1O5S3CLHrmLWtZ8CeBNawnAMBlaDzZ2h9duDED+Ecx/bYYJakcQXR++LpqQ1voYX8gwGLD8dBY3i+hgjZ/pA6ITM1PLVwNaHzUZ5uL3ne6/RyzsjCfK+cJdxt+OtN6QsGHJwrV3hX3mVcyZVE3Ta72/1asm3CzeQAYA3CwBdxqfAONYck8UZeh8N0VtTsX+g8nrPBozRv47nF4JhFjBG2N/u37MEixoN8skV user@host)
+  changed: [client] 
 
   PLAY RECAP ***************************************************************************************************************************************************************************************************************
   pi                         : ok=2    changed=1    unreachable=0    failed=0
