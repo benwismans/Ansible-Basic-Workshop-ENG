@@ -13,4 +13,3 @@ Dit lab is gebaseerd op Ansible 2.9. In dit lab wordt een Azure Virtual Machine 
 
 ### Extra labs
 10. [Example - Linux server](labs/10_NL_Example_Linux-Server.md)
-- [Workshop thuis of op kantoor afmaken](labs/99_NL_Workshop_afmaken.md)
