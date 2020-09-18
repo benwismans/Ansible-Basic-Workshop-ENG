@@ -1,5 +1,5 @@
 # Lab 3: Playbook - Ansible installeren
-In dit lab gaan we Ansible installeren. We gebruiken de pip versie, omdat de versie die je met apt-get kunt installeren inmiddels al erg verouderd is. Uit pip kunnen we de meest versie installeren, of zelfs een specifieke versie kiezen.
+In dit lab gaan we Ansible installeren. We gebruiken de pip versie, omdat de versie die je met yum kunt installeren inmiddels al erg verouderd is. Uit pip kunnen we de meest recente versie installeren, of zelfs een specifieke versie kiezen.
 
 ## Task 3.1: Dependancies installeren
 Om Ansible goed te kunnen laten werken is het nodig om dependancies te installeren. In Ansible is het mogelijk om een lijst te makem met deze dependancies, om deze daarna te installeren.
@@ -17,10 +17,8 @@ Om Ansible goed te kunnen laten werken is het nodig om dependancies te installer
       vars:
         packages:
         - python-pip
-        - ieee-data
         - python-netaddr
         - python-kerberos
-        - python-selinux
         - python-xmltodict
         - python-httplib2
         - python-jinja2
@@ -79,7 +77,7 @@ In Ansible is de variable ``become`` verantwoordelijk voor het starten van een p
 
   ``$ ansible-playbook workshop.yml``
 
-**Tip:** De Raspberry is standaard geconfigueerd dat sudo niet om een wachtwoord vraagt (``NOPASSWD: ALL``). Daarom kunnen we het playbook starten zonder ``-K``. In productie omgevingen is het echter gebruikelijk om sudo met een wachtwoord te starten. Met ``-K`` kun je dit wachtwoord aan Ansible doorgeven.
+**Tip:** De VM is standaard geconfigueerd dat sudo niet om een wachtwoord vraagt (``NOPASSWD: ALL``). Daarom kunnen we het playbook starten zonder ``-K``. In productie omgevingen is het echter gebruikelijk om sudo met een wachtwoord te starten. Met ``-K`` kun je dit wachtwoord aan Ansible doorgeven.
 
 ## Task 3.3: Ansible via pip installeren.
 Ansible heeft een ``pip`` module. Deze module kan Ansible installeren via Pip.
