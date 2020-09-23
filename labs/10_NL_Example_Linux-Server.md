@@ -1,4 +1,4 @@
-# Lab 10: Example - Linux Server
+# Lab 10: Extra - Linux Server
 
 In dit lab gaan we een andere Linux server configureren. Alle ansible acties voer je uit op de du-ans-XXa, en de linux server die we gaan configureren is de du-ans-XXb. 
 
