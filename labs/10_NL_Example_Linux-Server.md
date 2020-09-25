@@ -144,4 +144,4 @@ Met Ansible kun je eenvoudig content kopieën van je Ansible Engine naar de webs
 
   ``$ ansible-playbook linux.yml -k``
   
-* Open in je browser de url ``http://<hostname>`` (vervang ``<hostname>`` door het de hostname van de Linux server).
+* Open in je browser de url ``http://<hostname>.westeurope.cloudapp.azure.com`` (vervang ``<hostname>`` door het de hostname van de Linux server).
