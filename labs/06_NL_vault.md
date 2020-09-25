@@ -107,4 +107,4 @@ Klaar!
 
 Terug naar: [Inhoudsopgave](/README.md)
 
-Extra Lab: [Lab 10 - Linux](/labs/06_NL_vault.md)
+Extra Lab: [Lab 10 - Linux](/labs/10_NL_Example_Linux-Server.md)
