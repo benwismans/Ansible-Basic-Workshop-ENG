@@ -1,7 +1,5 @@
 # Introductie
-Welkom bij de workshop Ansible-Basic. In deze workshop gaan we een Azure VM met Linux inrichten met Ansible. Na de workshop is je Linux VM nog een aantal dagen beschikbaar, zodat je deze kunt gebruiken voor de ontwikkeling van je eigen Ansible playbooks. Je kunt er natuurlijk ook een demo mee geven aan je collega's. 
-
-De workshop is zo opgezet, dat deze vanaf iedere plek verder afgemaakt kan worden. 
+Welkom bij de workshop Ansible-Basic. In deze workshop gaan we een  VM met Linux inrichten als Ansible Server.  
 
 ## Benodigdheden
 Voor deze workshop heb je nodig:
