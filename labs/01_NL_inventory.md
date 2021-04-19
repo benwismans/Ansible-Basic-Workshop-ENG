@@ -34,11 +34,11 @@ Door een ansible.cfg in dezelfde directory te zetten als het playbook (welke we 
 
   ``$ vi ansible.cfg``
 
-* Vul de ansible.cfg met (let weer op je usernummer!):
+* Vul de ansible.cfg met (let op je user, dit is de lokale user!):
   ```
   [defaults]
   inventory = ~/inventory
-  remote_user = userXX
+  remote_user = user
 
   host_key_checking = False
   ```
