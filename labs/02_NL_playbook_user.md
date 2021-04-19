@@ -10,7 +10,7 @@ In dit lab maken we een playbook voor het installeren van de public key voor SSH
 ## Task 2.1: Playbook aanmaken
 In het playbook gaan we de module ``authorized_key`` gebruiken om de SSH public key op de Client te installeren. In de verborgen directory .ssh is de public en de private key voor geïnstalleerd.
 
-* Controleer of de SSH keys zijn geïnstalleerd:
+* Controleer of de SSH keys zijn geïnstalleerd (zie stap 0, voorbereidingen):
 
   ``$ ls ~/.ssh/``
 
@@ -24,7 +24,7 @@ De file ``id_rsa.pub`` is de public key. De file ``id_rsa`` is de private key. M
 
   ``$ vi workshop.yml``
   
-* Vul het playbook met (let op dat je de goede nummer kiest van jouw user):
+* Vul het playbook met:
 
   ```
   ---
@@ -33,7 +33,7 @@ De file ``id_rsa.pub`` is de public key. De file ``id_rsa`` is de private key. M
     tasks:
     - name: "Ensure authorized key is installed for user"
       authorized_key:
-        user: userXX
+        user: user02
         state: present
         key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
   ```
@@ -72,7 +72,7 @@ Omdat nu de Authorized key voor SSH op de Client is geïnstalleerd, kun je zonde
 
 * Controleer of je zonder wachtwoord in kunt loggen (vervang ``<hostname>`` met de hostname van je client):
   
-  ``$ ssh -l userXX <hostname>`` 
+  ``$ ssh -l user02 <hostname>`` 
 
   ``` 
   userXX@client:~ $ 
@@ -87,6 +87,9 @@ Omdat nu de Authorized key voor SSH op de Client is geïnstalleerd, kun je zonde
   Connection to client closed.
   ```
 
+* Pas de ansible.cfg aan, zodat je met de ansible-user inlogt. 
+``$ vi ansible.cfg en pas de lokale user aan naar user02``
+
 * Start het playbook, maar zonder de parameter ``--ask-pass``:
 
   ``$ ansible-playbook workshop.yml``
@@ -98,7 +101,7 @@ Omdat nu de Authorized key voor SSH op de Client is geïnstalleerd, kun je zonde
   TASK [Gathering Facts] ***************************************************************************************************************************************************************************************************
   ok: [client]
 
-  TASK [Ensure authorized key is installed for user userXX] ********************************************************************************************************************************************************************
+  TASK [Ensure authorized key is installed for user user02] ********************************************************************************************************************************************************************
   ok: [client] => (item=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCnZtlzLhYrZAIxTiiN/b5WaRAHaze4BecufyjpQkQ9QCSqglfxnKSERtrwQmes31FJPRNY2DWvzvSgV1cJHnyYWKFeWQJv6nVvSCFOpmtqbqPHuSVV1O5S3CLHrmLWtZ8CeBNawnAMBlaDzZ2h9duDED+Ecx/bYYJakcQXR++LpqQ1voYX8gwGLD8dBY3i+hgjZ/pA6ITM1PLVwNaHzUZ5uL3ne6/RyzsjCfK+cJdxt+OtN6QsGHJwrV3hX3mVcyZVE3Ta72/1asm3CzeQAYA3CwBdxqfAONYck8UZeh8N0VtTsX+g8nrPBozRv47nF4JhFjBG2N/u37MEixoN8skV user@host)
 
   PLAY RECAP ***************************************************************************************************************************************************************************************************************
