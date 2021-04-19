@@ -1,5 +1,5 @@
 # Lab 4: Playbook - Workshop voorzetten vanaf de Client
-In dit lab gaan we de workshop files overzetten naar de Client, zodat de rest van de workshop vanaf de Client uitgevoerd kan worden.
+In dit lab gaan we de workshop files overzetten naar de Client in de directory van user02, zodat de rest van de workshop vanaf de Client uitgevoerd kan worden.
 
 ## Task 4.1: Workshop files overzetten
 Om de workshop files over te zetten, maken we gebruik van de copy module om de files naar de Client te kopieëren.
@@ -10,9 +10,9 @@ Om de workshop files over te zetten, maken we gebruik van de copy module om de f
   - name: "Ensure Ansible workshop files are copied to the Client"
     copy:
       src: "{{ item }}"
-      dest: "/home/userXX/{{ item }}"
-      owner: "userXX"
-      group: "userXX"
+      dest: "/home/user02/{{ item }}"
+      owner: "user02"
+      group: "user02"
     with_items:
     - ansible.cfg
     - inventory
@@ -30,9 +30,9 @@ De laatste stap is het overzetten van de SSH key.
   - name: "Ensure SSH key is installed on the Client"
     copy:
       src: "~/.ssh/{{ item }}"
-      dest: "/home/userXX/.ssh/{{ item }}"
-      owner: "userXX"
-      group: "userXX"
+      dest: "/home/user02/.ssh/{{ item }}"
+      owner: "user02"
+      group: "user02"
       mode: "0600"
     with_items:
     - id_rsa
@@ -53,7 +53,7 @@ client                         : ok=6    changed=0    unreachable=0    failed=0
 
 * Log in op je Client (vervang ``<hostname>`` met de hostname van je client):
 
-  ``$ ssh -l userXX <hostname>``
+  ``$ ssh -l user02 <hostname>``
   
 * Controleer de versie van Ansible (2.9.0):
 
