@@ -1,11 +1,12 @@
-# Introductie
+# Introductie en Voorbereidingen
 Welkom bij de workshop Ansible-Basic. In deze workshop gaan we een  VM met Linux inrichten als Ansible Server.  
 
 ## Benodigdheden
 Voor deze workshop heb je nodig:
 - Laptop met een SSH client (bijvoorbeeld putty: https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
-- Een Linux server met SSH toegang en Ansible (in deze workshop de bastion server: du-bastion.westeurope.cloudapp.azure.com)
-- Sheet met account gegevens 
+- Een Linux server met SSH toegang
+- Lokale user op de VM
+- Root rechten op de VM
 
 ## Uitvoering
 - Alle acties worden uitgevoerd vanuit de home directory van de SSH server (tenzij anders aangegeven).
@@ -27,6 +28,8 @@ Voor deze workshop heb je nodig:
 ```
 user@vm:~ $ sudo yum install epel-release
 user@vm:~ $ sudo yum install ansible
+user@vm:~ $ ssh-keygen (nodig voor latere opdracht, bij voorkeur niet als root user uitvoeren)
+
 
 ```
 
