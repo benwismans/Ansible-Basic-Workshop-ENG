@@ -1,5 +1,5 @@
 # Ansible-Basic-Workshop
-Dit lab is gebaseerd op Ansible 2.9. In dit lab wordt een Azure Virtual Machine zodanig ingericht, dat deze als Ansible (engine) server gebruikt kan worden.
+Dit lab is gebaseerd op Ansible 2.9. In dit lab wordt een  Virtual Machine zodanig ingericht, dat deze als Ansible (engine) server gebruikt kan worden.
 
 ## Contents
 
