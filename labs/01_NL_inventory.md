@@ -1,7 +1,7 @@
 # Lab 1: Inventory file aanmaken
 Een belangrijk onderdeel voor Ansible is de inventory file. In deze file wordt beschreven hoe de omgeving er uit ziet.
 
-Alle acties worden uitgevoerd in de home directory van de **SSH server** (du-bastion.westeurope.cloudapp.azure.com).
+Alle acties worden uitgevoerd in de home directory van de Linux Server.
 
 ## Task 1.1: Inventory file aanmaken
 In de inventory file wordt beschreven hoe Ansible je clients kan bereiken. Een Ansible inventory werkt altijd met een groep, welke tussen blokhaken wordt gezet: [ en ]. Onder de groep worden alle hosts omschreven. In dit geval gaat het om maar 1 host. Omdat het aanspreken van een host makkelijker gaat met een naam, dan met een IP adres, geven we de client een naam. Met de variable ansible_host koppelen we deze naam aan het juiste IP adres.
@@ -10,11 +10,11 @@ In de inventory file wordt beschreven hoe Ansible je clients kan bereiken. Een A
 
   ``$ vi inventory``
 
-* Vul de inventory file met (Let op: vul op XX je nummer in van jouw user/omgeving; user09 gebruikt dus du-ans-09a.westeurope.cloudapp.azure.com):
+* Vul de inventory file met (Let op: Gebruik voor nu localhost, omdat we acties op de VM zelf eerst uitvoeren):
 
   ```
   [workshop]
-  client ansible_host=du-ans-12a.westeurope.cloudapp.azure.com
+  client ansible_host=<ip-address of hostname>
   ```
 
 ## Task 1.2: Ansible vertellen waar de inventory file staat
@@ -72,6 +72,6 @@ Ansible werkt met modules. Voor bijna elke functie is wel een module te vinden. 
 
 In de inventory file hebben we de groep [workshop] gedefineerd. De ``ping`` module zal daarom alle hosts controleren. In ons lab hebben we maar 1 host gedefineerd: ``client``. Als we meerdere hosts in de groep hadden gezet, zouden alle hosts antwoorden. 
 
-**Tip:** Het is ook mogelijk om een enkele host te testen. Met ``ansible --ask-pass -m ping client`` wordt de module alleen maar op de host ``pi`` uitgevoerd.
+**Tip:** Het is ook mogelijk om een enkele host te testen. Met ``ansible --ask-pass -m ping client`` wordt de module alleen maar op de host ``client`` uitgevoerd.
 
 Volgende stap: [Lab 02: Playbook - User aanmaken](/labs/02_NL_playbook_user.md)
