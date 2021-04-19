@@ -21,6 +21,15 @@ Voor deze workshop heb je nodig:
   -rw-r--r-- 1 pi pi  979 Feb 14 17:07 brocade.yml
   -rw-r--r-- 1 pi pi  884 Feb 14 22:07 cisco.yml
   ```
+  
+  ## Installatie Ansible
+- Deze acties moeten als root, of via een user die via sudo rechten heeft uitgevoerd worden:
+```
+user@vm:~ $ sudo yum install epel-release
+user@vm:~ $ sudo yum install ansible
+
+```
+
 
   
 Volgende stap: [Lab 1 - Inventory file aanmaken](/labs/01_NL_inventory.md)
