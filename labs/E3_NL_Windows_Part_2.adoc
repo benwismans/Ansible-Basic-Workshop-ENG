@@ -72,3 +72,12 @@ Met Ansible kun je Windows updates geautomatiseerd uitvoeren. In deze workshop g
 * Voer het playbook uit
 
 
+
+-----
+EINDE WORKSHOP, HANDIGE LINKS
+
+Windows Firewall:
+https://docs.ansible.com/ansible/latest/collections/community/windows/win_firewall_rule_module.html
+
+Windows Powershell:
+https://docs.ansible.com/ansible/latest/collections/ansible/windows/win_shell_module.html
