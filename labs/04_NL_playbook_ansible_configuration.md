@@ -1,4 +1,4 @@
-# Lab 4: Playbook - Workshop voorzetten vanaf de Client
+# Lab 4: Playbook - Workshop items kopieren naar een Client
 In dit lab gaan we de workshop files kopieren naar de Client.
 
 ## Task 4.1: Workshop files overzetten
