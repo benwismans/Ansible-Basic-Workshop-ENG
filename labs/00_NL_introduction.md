@@ -51,7 +51,7 @@ The key's randomart image is:
 user@vm:~ $ ls -a .ssh
 .  ..  id_rsa  id_rsa.pub
 user@vm:~ $ 
-
+```
 
   
  ## Installatie Ansible
