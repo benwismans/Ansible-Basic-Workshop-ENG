@@ -10,11 +10,13 @@ In de inventory file wordt beschreven hoe Ansible je clients kan bereiken. Een A
 
   ``$ vi inventory``
 
-* Vul de inventory file met (Let op: Gebruik voor nu localhost, omdat we acties op de VM zelf eerst uitvoeren):
+* Vul de inventory file met (Let op: Gebruik het IP-adres of hostname van de 2 overige Linux machines):
 
   ```
   [workshop]
-  client ansible_host=localhost
+  client1 ansible_host=<hostname of IP>
+  client2 ansible_host=<hostname of IP>
+
   ```
 
 ## Task 1.2: Ansible vertellen waar de inventory file staat
@@ -34,7 +36,7 @@ Door een ansible.cfg in dezelfde directory te zetten als het playbook (welke we 
 
   ``$ vi ansible.cfg``
 
-* Vul de ansible.cfg met (let op je user, dit is de lokale user!):
+* Vul de ansible.cfg met (let op je user, dit moet een user zijn op de overige Linux machines waarmee je kunt inloggen):
   ```
   [defaults]
   inventory = ~/inventory
