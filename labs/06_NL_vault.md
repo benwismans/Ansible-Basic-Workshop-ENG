@@ -106,5 +106,3 @@ Ansible herkent zelf of een bestand encrypt is en zal deze automatisch decrypten
 Klaar!
 
 Terug naar: [Inhoudsopgave](/README.md)
-
-Extra Lab: [Lab 7 - Linux](/labs/07_NL_Example_Linux-Server.md)
