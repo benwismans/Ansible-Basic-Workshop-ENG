@@ -24,13 +24,13 @@ Voor deze workshop heb je nodig:
   ```
   
   ## Installatie Ansible
-- Deze acties moeten als root, of via een user die via sudo rechten heeft uitgevoerd worden (gebaseeerd op CentOS/RHEL, voor OL7 zie onder):
+- Deze acties moeten als root, of via een user die via sudo rechten heeft uitgevoerd worden (gebaseeerd op CentOS/RHEL, voor Oracle Linux zie onder):
 ```
 user@vm:~ $ sudo yum install epel-release
 user@vm:~ $ sudo yum install ansible
 user@vm:~ $ ssh-keygen (nodig voor latere opdracht, bij voorkeur niet als root user uitvoeren)
 
-- Oracle Linux 7:
+- Oracle Linux X (voor OL8 verander je ol7_developer_EPEL in ol8_developer_EPEL):
 user@vm:~ $ sudo yum-config-manager --enable ol7_developer_EPEL
 user@vm:~ $ sudo yum install ansible-python3
 
