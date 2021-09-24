@@ -1,5 +1,5 @@
 # Lab 4: Playbook - Workshop voorzetten vanaf de Client
-In dit lab gaan we de workshop files overzetten naar de Client in de directory van user02, zodat de rest van de workshop vanaf de Client uitgevoerd kan worden.
+In dit lab gaan we de workshop files kopieren naar de Client.
 
 ## Task 4.1: Workshop files overzetten
 Om de workshop files over te zetten, maken we gebruik van de copy module om de files naar de Client te kopieëren.
@@ -51,40 +51,10 @@ PLAY RECAP *********************************************************************
 client                         : ok=6    changed=0    unreachable=0    failed=0
 ```
 
-* Log in op je Client (vervang ``<hostname>`` met de hostname van je client):
+* Log in op je Client en kijk of de bestanden er staan (vervang ``<hostname>`` met de hostname van je client):
 
   ``$ ssh -l user02 <hostname>``
   
-* Controleer de versie van Ansible (2.9.0):
-
-  ``$ ansible --version``
   
-  ```
-  ansible 2.9.0
-    config file = /home/user11/ansible.cfg
-    configured module search path = [u'/home/user01/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
-    ansible python module location = /usr/lib/python2.7/site-packages/ansible
-    executable location = /usr/bin/ansible
-    python version = 2.7.5 (default, Apr  2 2020, 13:16:51) [GCC 4.8.5 20150623 (Red Hat 4.8.5-39)]
-
-  ```
-
-* Test of het ``adhoc`` commando ``ping`` werkt:
-
-  ``$ ansible -m ping workshop``
-  
-  ```
-  client | SUCCESS => {
-    "ansible_facts": {
-        "discovered_interpreter_python": "/usr/bin/python"
-    },
-    "changed": false,
-    "ping": "pong"
-  }
-  ```
-
-* Voer het playbook uit:
-
-  ``$ ansible-playbook workshop.yml``
    
 Volgende stap: [Lab 5 - Role - User aanmaken](/labs/05_NL_role_user.md)
