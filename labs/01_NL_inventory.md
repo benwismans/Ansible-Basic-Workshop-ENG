@@ -14,7 +14,7 @@ In de inventory file wordt beschreven hoe Ansible je clients kan bereiken. Een A
 
   ```
   [workshop]
-  client ansible_host=<ip-address of hostname>
+  client ansible_host=localhost
   ```
 
 ## Task 1.2: Ansible vertellen waar de inventory file staat
