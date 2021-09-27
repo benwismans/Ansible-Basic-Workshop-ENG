@@ -25,7 +25,7 @@ De eerste stap is de webserver software installeren. Na installatie moet de webs
 
 * Voer het playbook uit:
 
-  ``$ ansible-playbook linux.yml --ask-pass``
+  ``$ ansible-playbook linux.yml``
   
 ## Task 7.2: Firewall configureren
 
