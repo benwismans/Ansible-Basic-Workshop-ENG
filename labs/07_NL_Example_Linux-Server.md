@@ -16,6 +16,7 @@ De eerste stap is de webserver software installeren. Na installatie moet de webs
       - name: Install apache packages
         yum:
           name: httpd
+          state: present
 
       - name: ensure httpd is running
         service:
