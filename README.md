@@ -12,4 +12,4 @@ Dit lab is gebaseerd op Ansible 2.9. In dit lab wordt een  Virtual Machine zodan
 6. [Vault - Encryptie gebruiken](labs/06_NL_vault.md)
 
 ### Extra labs
-10. [Example - Linux server](labs/10_NL_Example_Linux-Server.md)
+10. [Example - Linux server](labs/07_NL_Example_Linux-Server.md)
