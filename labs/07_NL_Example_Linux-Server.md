@@ -68,6 +68,6 @@ Om de webserver goed te laten werken, dient poort 80 (http) open gezet te worden
     
 * Voer het playbook uit:
 
-  ``$ ansible-playbook linux.yml -k``
+  ``$ ansible-playbook linux.yml ``
   
 * Open in je browser de url ``http://<hostname>.<domain-name>`` (vervang ``<hostname>`` door het de hostname van de Linux server).
