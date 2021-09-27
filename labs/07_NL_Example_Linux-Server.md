@@ -48,7 +48,7 @@ Om de webserver goed te laten werken, dient poort 80 (http) open gezet te worden
 
 * Voer het playbook uit:
 
-  ``$ ansible-playbook linux.yml -k``
+  ``$ ansible-playbook linux.yml ``
    
 ## Task 7.3: Installeer content voor de webserver
 
