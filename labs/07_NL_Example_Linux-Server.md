@@ -53,23 +53,6 @@ Om de webserver goed te laten werken, dient poort 80 (http) open gezet te worden
    
 ## Task 7.3: Installeer content voor de webserver
 
-Met Ansible kun je eenvoudig content kopieën van je Ansible Engine naar de webserver. In dit voorbeeld installeren we een index.html, welke je daarna via de browser op kunt vragen.
-
-* Maak de directory ``files`` aan:
-  
-  ``$ mkdir files``
-  
-* Maak een HTML file aan met content (in de directory files):
-
-  ``$ vi files/index.html``
-  
-  ```
-  <html>
-    <body>
-      <h1>Hello world</h1>
-    </body>
-  </html>
-  ```
   
 * Pas het playbook ``linux.yml`` aan:
 
