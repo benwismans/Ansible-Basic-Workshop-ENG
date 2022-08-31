@@ -10,11 +10,12 @@ In de inventory file wordt beschreven hoe Ansible je clients kan bereiken. Een A
 
   ``$ vi inventory``
 
-* Vul de inventory file met de 2e VM (let op: vul bij X jouw user nummer in).
+* Vul de inventory file met de beide VM's (let op: vul bij X jouw user nummer in).
 
   ```
   [workshop]
-  mst-ansible-training-userX-b.yxorp.nl ###bv. mst-ansible-training-user8-b.yxorp.nl
+  mst-ansible-training-userX-a.yxorp.nl 
+  mst-ansible-training-userX-b.yxorp.nl
 
   ```
 
