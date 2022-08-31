@@ -4,15 +4,15 @@ In dit lab gaan we de workshop files kopieren naar de Client.
 ## Task 4.1: Workshop files overzetten
 Om de workshop files over te zetten, maken we gebruik van de copy module om de files naar de Client te kopieëren.
   
-* Vul je playbook aan met:
+* Vul je playbook aan met (denk aan je usernummer):
 
   ```
   - name: "Ensure Ansible workshop files are copied to the Client"
     copy:
       src: "{{ item }}"
-      dest: "/home/user02/{{ item }}"
-      owner: "user02"
-      group: "user02"
+      dest: "/home/userXX/{{ item }}"
+      owner: "userXX"
+      group: "userXX"
     with_items:
     - ansible.cfg
     - inventory
