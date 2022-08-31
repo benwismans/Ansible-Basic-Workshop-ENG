@@ -24,7 +24,7 @@ Voor deze workshop heb je nodig:
   ```
   
  # Pre-check SSH-keys
- Je heb 3 Linux VM's. Op de 1e gaan we Ansible Server installeren. Als het goed is, is er een lokale user waarmee we ingelogd zijn en waarmee we naar de andere 2 VM's straks moeten kunnen connecteren. Deze lokale user moet een public/private SSH-key hebben. Deze is te maken met "ssh-keygen -t rsa". Zet er geen passphrase op.
+ Je heb 2 Linux VM's. De 1e VM is de Ansible Server Core geinstallerd. Als het goed is, is er een lokale user waarmee we ingelogd zijn en waarmee we naar de andere VM straks moeten kunnen connecteren. Deze lokale user moet een public/private SSH-key hebben. Deze is te maken met "ssh-keygen -t rsa". Zet er geen passphrase op.
    ```
 user@vm01:~ $ ssh-keygen
 Generating public/private rsa key pair.
@@ -51,20 +51,6 @@ The key's randomart image is:
 user@vm01:~ $ ls -a .ssh
 .  ..  id_rsa  id_rsa.pub
 user@vm01:~ $ 
-```
-
-  
- ## Installatie Ansible
-- Deze acties moeten als root, of via een user die via sudo rechten heeft uitgevoerd worden (gebaseeerd op CentOS/RHEL, voor Oracle Linux zie onder):
-```
-user@vm01:~ $ sudo yum install epel-release
-user@vm01:~ $ sudo yum install ansible
-user@vm01:~ $ ssh-keygen (nodig voor latere opdracht, bij voorkeur niet als root user uitvoeren)
-
-- Oracle Linux X (voor OL8 verander je ol7_developer_EPEL in ol8_developer_EPEL):
-user@vm01:~ $ sudo yum-config-manager --enable ol7_developer_EPEL
-user@vm01:~ $ sudo yum install ansible-python3
-
 ```
 
 
