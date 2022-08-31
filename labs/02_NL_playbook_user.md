@@ -24,7 +24,7 @@ De file ``id_rsa.pub`` is de public key. De file ``id_rsa`` is de private key. M
 
   ``$ vi workshop.yml``
   
-* Vul het playbook met:
+* Vul het playbook met (let weer op je usernummer!):
 
   ```
   ---
@@ -33,7 +33,7 @@ De file ``id_rsa.pub`` is de public key. De file ``id_rsa`` is de private key. M
     tasks:
     - name: "Ensure authorized key is installed for user"
       authorized_key:
-        user: user02
+        user: userXX
         state: present
         key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
   ```
