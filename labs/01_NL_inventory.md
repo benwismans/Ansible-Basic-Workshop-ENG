@@ -10,12 +10,11 @@ In de inventory file wordt beschreven hoe Ansible je clients kan bereiken. Een A
 
   ``$ vi inventory``
 
-* Vul de inventory file met (Let op: Gebruik het IP-adres of hostname van de 2 overige Linux machines):
+* Vul de inventory file met de 2e VM (let op: vul bij X jouw user nummer in).
 
   ```
   [workshop]
-  client1 ansible_host=<hostname of IP>
-  client2 ansible_host=<hostname of IP>
+  mst-ansible-training-userX-b.yxorp.nl ###bv. mst-ansible-training-user8-b.yxorp.nl
 
   ```
 
@@ -36,11 +35,11 @@ Door een ansible.cfg in dezelfde directory te zetten als het playbook (welke we 
 
   ``$ vi ansible.cfg``
 
-* Vul de ansible.cfg met (let op je user, dit moet een user zijn op de overige Linux machines waarmee je kunt inloggen):
+* Vul de ansible.cfg met (let op je usernummer):
   ```
   [defaults]
   inventory = ~/inventory
-  remote_user = user
+  remote_user = userXX
 
   host_key_checking = False
   ```
