@@ -17,11 +17,13 @@ De eerste stap is de webserver software installeren. Na installatie moet de webs
         yum:
           name: httpd
           state: present
+        tags: install
 
       - name: ensure httpd is running
         service:
           name: httpd 
           state: started
+        tags: install
   ```
 
 * Voer het playbook uit:
@@ -40,16 +42,18 @@ Om de webserver goed te laten werken, dient poort 80 (http) open gezet te worden
           service: http
           permanent: true
           state: enabled
+        tags: configure
 
       - name: Ensure firewalld service is restarted after the firewall changes
         service: 
           name: firewalld 
           state: restarted
+        tags: configure
    ```
 
-* Voer het playbook uit:
+* Voer het playbook uit met alleen de configure tag:
 
-  ``$ ansible-playbook linux.yml ``
+  ``$ ansible-playbook linux.yml --tags configure``
    
 ## Task 7.3: Installeer content voor de webserver
 
@@ -64,10 +68,11 @@ Om de webserver goed te laten werken, dient poort 80 (http) open gezet te worden
           owner: apache
           group: apache
           mode: 0644
+        tags: content
   ```
     
 * Voer het playbook uit:
 
-  ``$ ansible-playbook linux.yml ``
+  ``$ ansible-playbook linux.yml --tags content``
   
 * Open in je browser de url ``http://<hostname>.<domain-name>`` (vervang ``<hostname>`` door het de hostname van de Linux server).
