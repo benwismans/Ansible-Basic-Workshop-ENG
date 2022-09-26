@@ -22,7 +22,7 @@ To copy the workshop files, we will use the ``copy`` module.
 **Tip:** The ``with_items`` is used to generate a list. Ansible repeatedly fills the variable ``item`` with the value in the list (a for loop).
 
 ## Task 4.2: SSH key 
-The last step is copyin the SSH keypair to the 2nd system. 
+The last step is copy the SSH keypair to the 2nd system. 
 
 * Add to your playbook:
 
