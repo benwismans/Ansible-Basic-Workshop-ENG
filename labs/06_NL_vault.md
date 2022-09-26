@@ -1,6 +1,6 @@
 # Lab 6: Ansible Vault
 
-Ansible Vault is a function withi ansible that can encrypt your senstive data, like passwords, private kets or SSL certificates. Ansible Vault makes it possible to still put this data in a ``SCM`` (Source Code Management; like github).
+Ansible Vault is a function within ansible that can encrypt your senstive data, like passwords, private kets or SSL certificates. Ansible Vault makes it possible to still put this data in a ``SCM`` (Source Code Management; like github).
 
 Vault variables get decrpyted by Ansible automaticcaly, if you provide the ``vault password``. A vault variable that is encrypted always starts with ``$ANSIBLE_VAULT;1.1;AES256``.
 
