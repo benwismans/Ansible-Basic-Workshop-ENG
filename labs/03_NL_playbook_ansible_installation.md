@@ -1,3 +1,3 @@
-Dit lab is reeds voltooid bij stap 0. Ga verder met:
+This lab is already pre-configured.
 
-Volgende stap: [Lab 4 - Playbook - Configuratie Ansible](/labs/04_NL_playbook_ansible_configuration.md)
+Next step: [Lab 4 - Playbook - Configure Ansible](/labs/04_NL_playbook_ansible_configuration.md)
