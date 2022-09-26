@@ -105,4 +105,5 @@ Ansible herkent zelf of een bestand encrypt is en zal deze automatisch decrypten
 
 Klaar!
 
-Terug naar: [Inhoudsopgave](/README.md)
+Volgende stap: Lab 7 - Linux - Apache
+
