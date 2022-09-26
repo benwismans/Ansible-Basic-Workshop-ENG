@@ -1,10 +1,11 @@
 # Lab 7: Extra - Apache Servers
+In this extra lab we will install apache on a linux server. We will also use tags.
   
 ## Task 7.1: Apache installeren
 
-De eerste stap is de webserver software installeren. Na installatie moet de webserver natuurlijk gestart worden. Beide acties voeren we uit in het onderstaande playbook.
+The first step is to install the webserver application. After the installation the webserver needs to be started. 
 
-* Maak het playbook ``linux.yml``:
+* Create the playbook ``linux.yml``:
 
   ```
   ---
@@ -26,15 +27,15 @@ De eerste stap is de webserver software installeren. Na installatie moet de webs
         tags: install
   ```
 
-* Voer het playbook uit:
+* Run the playbook:
 
   ``$ ansible-playbook linux.yml``
   
-## Task 7.2: Firewall configureren
+## Task 7.2: Firewall configuration
 
-Om de webserver goed te laten werken, dient poort 80 (http) open gezet te worden. Hiervoor gebruiken we de Ansible module ``firewalld``. Om er zeker van te zijn dat de nieuwe regel ingelezen wordt, herstarten we ``firewalld`` na de wijziging. 
+The properly use the webserver, we need to open port 80 (http) for TCP traffic. We use the Ansible module ``firewalld``. To be sure that the new rule is enforced, we restart the systemd service ``firewalld`` after the change. 
  
-* Pas het playbook ``linux.yml`` aan:
+* Add to the playbook ``linux.yml``:
  
   ```
       - name: Ensure port 80 is open for http access
@@ -51,14 +52,14 @@ Om de webserver goed te laten werken, dient poort 80 (http) open gezet te worden
         tags: configure
    ```
 
-* Voer het playbook uit met alleen de configure tag:
+* Run the playbook again, but just with the configure tag:
 
   ``$ ansible-playbook linux.yml --tags configure``
    
-## Task 7.3: Installeer content voor de webserver
+## Task 7.3: Install content for the webserver
 
   
-* Pas het playbook ``linux.yml`` aan:
+* Add to the playbook ``linux.yml``:
 
   ```
       - name: Ensure content is installed in the webserver
@@ -71,8 +72,8 @@ Om de webserver goed te laten werken, dient poort 80 (http) open gezet te worden
         tags: content
   ```
     
-* Voer het playbook uit:
+* Run the playbook with the content tag:
 
   ``$ ansible-playbook linux.yml --tags content``
   
-* Open in je browser de url ``http://<hostname>.<domain-name>`` (vervang ``<hostname>`` door het de hostname van de Linux server).
+* Open in your browser the url ``http://<hostname>.<domain-name>`` (change ``<hostname>`` by the  hostname of the Linux server).
