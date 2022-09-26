@@ -1,27 +1,27 @@
 # Lab 6: Ansible Vault
 
-Ansible Vault is een functie van Ansible waarmee je gevoelige gegevens, zoals wachtwoorden of private keys (bijvoorbeeld voor SSL certificaten), kunt versleutelen. Dit maakt het mogelijk om deze gegevens toch in een ``SCM`` te zetten. Het is namelijk niet de bedoeling dat je deze gegevens in plain tekst in een ``SCM`` (Source Code Management; bv. github) zet.
+Ansible Vault is a function withi ansible that can encrypt your senstive data, like passwords, private kets or SSL certificates. Ansible Vault makes it possible to still put this data in a ``SCM`` (Source Code Management; like github).
 
-Vault variablen worden door Ansible automatisch ontsleutelt, mits het ``vault password`` bekend is. Een vault variable begint altijd met ``$ANSIBLE_VAULT;1.1;AES256``.
+Vault variables get decrpyted by Ansible automaticcaly, if you provide the ``vault password``. A vault variable that is encrypted always starts with ``$ANSIBLE_VAULT;1.1;AES256``.
 
 
-## Task 6.1: Bestand encrypten
+## Task 6.1: Encrpyting files
 
-**Tip:** ansible-vault gebruikt standaard de editor ``vi``. Mocht je liever ``nano`` gebruiken, dan kun je de editor aanpassen door de environment variable ``EDITOR`` te vullen met: ``/bin/nano``. Gebruik hiervoor het commando: ``export EDITOR=/bin/nano``.
+**Tip:** ansible-vault uses the editor ``vi`` by default. If you would rather use ``nano``, then you can adjust the editor by editing the environment variable ``EDITOR`` with: ``/bin/nano``. You can use the command: ``export EDITOR=/bin/nano``.
 
-* Maak een nieuw bestand:
+* Create a new file:
 
   ``$ ansible-vault create foo``
 
-* Bedenk zelf een wachtwoord:
+* Come up with your own password:
 
   ```
   New Vault password:
   Confirm New Vault password:
   ```
 
-* Zet een geheime boodschap in het bestand en sla deze op (in ``vi`` gaat dat met ``:wq``).
-* Bekijk het bestand:
+* Put a secret message in the file and save it (in ``vi`` that's ``:wq``).
+* Inspect the file (it's encrypted):
 
   ``$ cat foo``
   
@@ -34,37 +34,37 @@ Vault variablen worden door Ansible automatisch ontsleutelt, mits het ``vault pa
   6563
   ```
 
-## Task 6.2: Encrypted bestand bewerken
+## Task 6.2: Editing an encrypted file
 
-* Edit het bestand:
+* Edit the file:
 
   ``$ ansible-vault edit foo``
 
-* Ansible vault vraagt om het wachtwoord. Alleen als het wachtwoord correct wordt ingevoerd zal de editor openen
+* Ansible asks the password. 
 
   ```
   Vault password:
   ```
 
-* Maak een wijziging en sla het bestand weer op.
+* Make a change and save again.
 
 
-## Task 6.3: Encrypted bestand inzien
+## Task 6.3: Looking at an encrypted file
 
-* Bekijk het bestand:
+* View the file:
 
   ``$ ansible-vault view foo``
 
-* Ansible vault vraagt om het wachtwoord. Alleen als het wachtwoord correct wordt ingevoerd zal het bestand weergegeven worden:
+* Ansible asks the password. 
 
   ```
   Vault password:
-  <inhoud van het bestand>
+  <decrpyted data>
   ```
 
-## Task 6.4: Wachtwoord wijzigen van een encrypted bestand
+## Task 6.4: Changing the password of an encrypted file
 
-* Pas het wachtwoord aan:
+* Adjust the password:
 
   ``$ ansible-vault rekey foo``
   
@@ -75,11 +75,11 @@ Vault variablen worden door Ansible automatisch ontsleutelt, mits het ``vault pa
    Rekey successful
    ```
 
-## Task 6.5: Encrypted bestand in je playbook gebruiken
+## Task 6.5: Using an encrypted file in your playbook
 
-Ansible herkent zelf of een bestand encrypt is en zal deze automatisch decrypten. Dit werkt voor alle modules. Voorwaarde is wel dat het ``vault password`` meegegeven wordt in het ``ansible-playbook`` commando. De parameter daarvoor is ``--ask-vault-pass``.
+Ansible will automatically recognize and encrypted file and will try to decrypt it. This works for all modules. You need to provide the ``vault password`` when running the ``ansible-playbook`` command. The parameter is ``--ask-vault-pass``.
 
-* Vul je playbook ``workshop.yml`` aan met:
+* Add to your playbook ``workshop.yml``:
 
   ```
     - name: "Ensure foo is copied and decrypted"
@@ -88,21 +88,20 @@ Ansible herkent zelf of een bestand encrypt is en zal deze automatisch decrypten
         dest: /home/userXX/foo 
   ```
 
-* Voer je playbook uit (Let er op dat je de parameter ``--ask-vault-pass`` mee geeft):
+* Run the playbook (make sure you add the parameter ``--ask-vault-pass``):
 
   ``$ ansible-playbook workshop.yml --ask-vault-pass``
 
-* Controleer of het bestand decrypted op je Client staat:
+* Check if the file is decrypted on your client system:
 
   ``$ cat foo``
   
   ```
   $ cat foo 
-  <inhoud van het bestand>
+  <decrypted data>
   ```
 
-**Tip:** Een mooie usecase voor Vault is het gebruik van SSL certificaten. Een SSL certificaat bestaat altijd uit een public en een private key, waarbij de private key (de naam zegt het al) beschermd dient te worden. Het is natuurlijk niet de bedoeling dat een private key in plain tekst in een Ansible script gezet wordt. Deze kun je daarom het beste dmv. Ansible Vault encrypten. Uiteindelijk belandt het certificaat natuurlijk wel unencrypted op het systeem.
+**Tip:** A good use case for Vault is when using SSL certificates. An SSL certificate always contains a public and a private key. The private key needs to be protetcted. It's not wise to put the private key in plain text in an Ansible script. That's why you should encrypt it with Ansible Vault.
 
-Klaar!
-Volgende stap: [Lab 7 - Linux - Apache](/labs/07_NL_Example_Linux-Server.md)
+Next step: [Lab 7 - Linux - Apache](/labs/07_NL_Example_Linux-Server.md)
 
