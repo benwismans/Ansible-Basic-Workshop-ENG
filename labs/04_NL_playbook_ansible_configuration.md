@@ -1,10 +1,10 @@
-# Lab 4: Playbook - Workshop items kopieren naar een Client
-In dit lab gaan we de workshop files kopieren naar de Client.
+# Lab 4: Playbook - Copy Items
+In this lab we will copy files to the client system.
 
-## Task 4.1: Workshop files overzetten
-Om de workshop files over te zetten, maken we gebruik van de copy module om de files naar de Client te kopieëren.
+## Task 4.1: Workshop files 
+To copy the workshop files, we will use the ``copy`` module.
   
-* Vul je playbook aan met (denk aan je usernummer):
+* Add to your existing playbook (remember user number):
 
   ```
   - name: "Ensure Ansible workshop files are copied to the Client"
@@ -19,12 +19,12 @@ Om de workshop files over te zetten, maken we gebruik van de copy module om de f
     - workshop.yml
   ```
 
-**Tip:** Met ``with_items`` kun je een lijst genereren. Ansible vult dan steeds de variable ``item`` met de onderdelen uit de lijst.
+**Tip:** The ``with_items`` is used to generate a list. Ansible repeatedly fills the variable ``item`` with the value in the list (a for loop).
 
-## Task 4.2: SSH key overzetten
-De laatste stap is het overzetten van de SSH key. 
+## Task 4.2: SSH key 
+The last step is copyin the SSH keypair to the 2nd system. 
 
-* Vul je playbook aan met:
+* Add to your playbook:
 
   ```
   - name: "Ensure SSH key is installed on the Client"
@@ -39,22 +39,22 @@ De laatste stap is het overzetten van de SSH key.
     - id_rsa.pub
   ```
 
-* Start het playbook. Als alles goed is gegaan, is nu Ansible start-klaar op je Client!
+* Start the playbook. 
 
   ``$ ansible-playbook workshop.yml``
 
 ## Task 4.3: Werking testen
-Als het playbook alleen nog maar "ok" meldingen geeft, is het tijd om in te loggen op de Client, om te controleren of Ansible werkt.
+If the playbook only returns "ok" results, it is time to login to the Client and check if the files are present.
 
 ```
 PLAY RECAP ****************************************************************************************************************************
 client                         : ok=6    changed=0    unreachable=0    failed=0
 ```
 
-* Log in op je Client en kijk of de bestanden er staan (vervang ``<hostname>`` met de hostname van je client):
+* Log in on the second system and check if the files are there (replace ``<hostname>`` with the hostname of your client):
 
   ``$ ssh -l user02 <hostname>``
   
   
    
-Volgende stap: [Lab 5 - Role - User aanmaken](/labs/05_NL_role_user.md)
+Next step: [Lab 5 - Role - User](/labs/05_NL_role_user.md)
