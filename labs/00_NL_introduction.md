@@ -1,20 +1,20 @@
-# Introductie en Voorbereidingen
-Welkom bij de workshop Ansible-Basic. In deze workshop gaan we een  VM met Linux inrichten als Ansible Server.  
+# Introduction and Preparations
+Welcome to the Ansible-Basic Workshop. In this workshop we will configure a Linux VM using Ansible.
 
-## Benodigdheden
-Voor deze workshop heb je nodig:
-- Laptop met een SSH client (bijvoorbeeld putty: https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
-- Een Linux server met SSH toegang
-- Lokale user op de VM
-- Root rechten op de VM
+## Requirements
+For this workshop, you will need:
+- Laptop with a SSH client (for example putty: https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
+- A Linux Server with SSH connection
+- Local user on the VM
+- Root permissions on the VM
 
-## Uitvoering
-- Alle acties worden uitgevoerd vanuit de home directory van de SSH server (tenzij anders aangegeven).
-- Instructies voor commando's worden vooraf gegaan met een prompt teken ($) en staan in een tekst blok. Dit teken is onderdeel van de opdracht prompt en hoort niet bij het commando (wie kent de dos prompt ``C:\>`` nog?). Bijvoorbeeld (Het commando in het voorbeeld is dus ``ls``):
+## Execution
+- All actions will be done from the user's home directory on the 1st VM (unless otherwise mentioned)
+- Instructions for commands will be preceded with a promot sign ($) and in a text block. This sign is for of the prompt and does not belong to the actual command. (The command in the example is ``ls``):
 
   ``$ ls``
   
-- De output wordt ook in een tekstblok weergegeven. Bijvoorbeeld:
+- The output is alsow shown in a text block. For example:
   ```
   user@vm01:~ $ ls -l
   total 3
@@ -24,7 +24,7 @@ Voor deze workshop heb je nodig:
   ```
   
  # Pre-check SSH-keys
- Je heb 2 Linux VM's. De 1e VM is de Ansible Server Core geinstallerd. Als het goed is, is er een lokale user waarmee we ingelogd zijn en waarmee we naar de andere VM straks moeten kunnen connecteren. Deze lokale user moet een public/private SSH-key hebben. Deze is te maken met "ssh-keygen -t rsa". Zet er geen passphrase op.
+ You have 2 Linux VM's. The first VM already has the Ansible Server Core installed. There is a local user prepared for you on both VM's. In a later stage, you need to be able to login between the VM's without password. Therefor you need to generate a public/private SSH-keypair. This is possible with the command "ssh-keygen -t rsa". Do not put a passphrase on it.
    ```
 user@vm01:~ $ ssh-keygen
 Generating public/private rsa key pair.
@@ -55,4 +55,4 @@ user@vm01:~ $
 
 
   
-Volgende stap: [Lab 1 - Inventory file aanmaken](/labs/01_NL_inventory.md)
+Next step: [Lab 1 - Inventory File Creation](/labs/01_NL_inventory.md)
