@@ -1,28 +1,26 @@
-# Lab 5: Role - User aanmaken
-Voor bijna elke uitdaging is wel een kant-en-klare rol te vinden op Ansible Galaxy (https://galaxy.ansible.com/). Het nadeel is echter dat er te veel roles te vinden zijn, waardoor het lastig is om de parels te vinden. Let bijvoorbeeld op het aantal downloads en het aantal sterren. Bekijk altijd de broncode van de role die je op Ansible Galaxy hebt gevonden en controleer of deze precies doet wat je zoekt. Indien nodig kun je de role altijd aanpassen.
+# Lab 5: Role - User 
+For almost every challenge there is a role already created on Ansible Galaxy. The disadvantage of this is that there are too many, which makes it difficult to find the good stuff. You can check the number of downloads and the ranking (in stars). You should always check the source code of a role you found on Ansible Galaxy to make sure it does what you want it to do. You can always adjust things if needed.
 
-Bijna alle rollen zijn te sturen met variablen. Deze zijn vaak beschreven in de documentatie van de role. Als de beschrijving ontbreekt kun je in de directory ``defaults`` en in de directory ``vars`` de definitie van de variablen terug vinden.
+Almost all roles use variables. These are often described in the documentation of the role. The variables can be defined inside the role in the directory ``defaults`` and in the directory ``vars``.
 
-Voor het aanmaken van een user kun je bijvoorbeeld zoeken op ``accounts``. De role ``ontic.account`` (https://galaxy.ansible.com/ontic/account)  lijkt precies te doen wat we willen. Deze gaan we installeren via Ansible Galaxy. 
+For creating a user, you can search for ``accounts``. The role ``ontic.account`` (https://galaxy.ansible.com/ontic/account) seems to do exactly what we would want in our lab. We are going to install the role using Ansible Galaxy. 
 
-**Tip** Naast het kijken naar het aantal stars of downloads kun je ook kijken of een ontwikkelaar meerdere roles heeft gebouwd. De ontic roles hebben misschien nog niet zoveel stars, maar de ontwikkelaar heeft wel tientallen roles gebouwd. Enkele bekende ontwikkelaars zijn:
+**Tip** Next to looking at the stars of downloads you can also check if a developer built multiple roles. The ontic roles might not have a lot of stars, but the developer made dozens of roles. Some well known contributors are:
 * https://galaxy.ansible.com/debops
 * https://galaxy.ansible.com/geerlingguy
 * https://galaxy.ansible.com/Oefenweb
 
-## Task 5.1: Role installeren
+## Task 5.1: Role installation
 
-We gaan een Ansible Role gebruiken om een user account aan te maken. Doordat de tasks in de role al zijn geschreven hoef je alleen maar de role te installeren en met parameters de role aan te sturen.
+We are going to use an Ansible Role to create a user account. Because the tasks are already un the role, we only need to install the role and adjust the parameters.
 
-**Tip** De onderstaande acties worden weer uitgevoerd op de Bastion server (log dus uit je Client).
-
-* Installeer de role via Ansible Galaxy:
+* Install the role via Ansible Galaxy:
 
   ``$ ansible-galaxy install ontic.account``
 
-De role wordt geïnstalleerd naar de ``.ansible/roles`` directory in je home directory. 
+The role will be installed in the ``.ansible/roles`` directory in your home directory. 
 
-* Controleer of de role is geinstalleerd in ``.ansible/roles``:
+* Check if the role is installed in ``.ansible/roles``:
 
   ``$ ls ~/.ansible/roles``
   
@@ -30,7 +28,7 @@ De role wordt geïnstalleerd naar de ``.ansible/roles`` directory in je home dir
   ontic.account
   ```  
 
-* Bekijk de role:
+* Inspect the role:
 
   ``$ cd ~/.ansible/roles/ontic.account``
   
@@ -39,15 +37,15 @@ De role wordt geïnstalleerd naar de ``.ansible/roles`` directory in je home dir
   ```
   defaults  docs  meta  tasks  tests
   ```
-  
-Een beschrijving van de onderdelen van een role vind je terug in de documentatie van Ansible op: https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html.
 
-**Tip:** Het vervolg van de workshop wordt vanuit je home directory uitgevoerd. Ga terug naar je home directory met het commando: ``$ cd``
+A description of the ports of a role can be found in the documentation of Ansible on: https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html.
 
-## Task 5.2: Password hash genereren
-De ``user`` module verwacht het wachtwoord in SHA512 formaat. 
+**Tip:** The remaining part of this workshop will be executed from the homedirectory of the user. So go back with the command ``$ cd``
 
-* Je kunt Ansible gebruiken om een SHA512 hash te genereren (vervang ``<WorkshopPassword>`` door een eigen wachtwoord):
+## Task 5.2: Password hash generation
+The ``user`` module expects the password in SHA512 format. 
+
+* You can use Ansible to generate a SHA512 hash (replace ``<WorkshopPassword>`` with your own password):
 
   ``$ ansible localhost -m debug -a "msg={{ '<WorkshopPassword>' | password_hash('sha512') }}"``
 
@@ -57,9 +55,9 @@ De ``user`` module verwacht het wachtwoord in SHA512 formaat.
   }
   ```
 
-## Task 5.3: Playbook maken met role
+## Task 5.3: Create a playbook with a role
 
-* Maak een nieuw playbook ``workshop-role.yml`` (vervang de hash met de hash uit task 5.2):
+* Create a new playbook ``workshop-role.yml`` (watch out: replace the  hash with the hash from task 5.2):
 
 ```
 ---
@@ -78,23 +76,23 @@ De ``user`` module verwacht het wachtwoord in SHA512 formaat.
   - role: ontic.account
 ```
 
-* Voer het playbook uit:
+* Run the playbook:
 
   ``$ ansible-playbook workshop-role.yml``
   
-* Controleer of de user is aangemaakt met je eigen wachtwoord (vervang ``<hostname>`` door de hostname van je Client):
+* Check if the user is created with your password (replace ``<hostname>`` by the hostname of your Client):
 
   ``$ ssh -l workshop <hostname>``
   
   ```
-  workshop@du-ans-09b's password: 
+  workshop@client password: 
   $
   ```
 
-# Praktijk voorbeeld
-In de praktijk plaats je de variablen in files die je defineerd in je playbook (zie: https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html). Voor webservers zou je een file ``webserver_vars.yml`` kunnen maken, met daarin een beschrijving van de ``accounts``, ``databases`` en ``virtual_hosts``. Het playbook zou dan (fictief) bestaan uit 3 roles: ``accounts``,``mysql`` en ``apache``.
+# Example
+In production ansible environments you will place the variables in files that you use in a playbook. (see: https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html). For webservers you could create a ``webserver_vars.yml``, with a defenition of the ``accounts``, ``databases`` and ``virtual_hosts``. The playbook would then exist of 3 roles: ``accounts``,``mysql`` and ``apache``.
 
-Onderstaand is slechts een voorbeeld (en hoeft dus niet uitgevoerd te worden):
+Below is just an example, and does not need to be run: 
 
 **webserver_vars.yml**:
 
@@ -138,6 +136,6 @@ apache_vhosts:
     - role: apache
 ```
 
-Het variable bestand beschrijft precies hoe de webservers er uit moeten zien en het playbook wordt ineens een stuk overzichtelijker.
+The variable file describes how the webservers should look and the playbook gets more organized. 
   
-Volgende stap: [Lab 6 - Vault - Encryptie gebruiken](/labs/06_NL_vault.md)
+Next step: [Lab 6 - Vault - Encryption](/labs/06_NL_vault.md)
