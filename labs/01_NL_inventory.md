@@ -1,16 +1,15 @@
-# Lab 1: Inventory file aanmaken
-Een belangrijk onderdeel voor Ansible is de inventory file. In deze file wordt beschreven hoe de omgeving er uit ziet.
+# Lab 1: Inventory file Creation
+An essential part of Ansible is the inventory file. This file contains the environment on which ansible code can be executed.
 
-Alle acties worden uitgevoerd in de home directory van de Linux Server.
+## Task 1.1: Inventory file creation
+In the inventory file are the hosts that can be reached with Ansible. An Ansible inventory works like a group, which can be put between square brackets
+[ and ]. Within the group all clients are written down. In our current example, we have only 1 host. 
 
-## Task 1.1: Inventory file aanmaken
-In de inventory file wordt beschreven hoe Ansible je clients kan bereiken. Een Ansible inventory werkt altijd met een groep, welke tussen blokhaken wordt gezet: [ en ]. Onder de groep worden alle hosts omschreven. In dit geval gaat het om maar 1 host. Omdat het aanspreken van een host makkelijker gaat met een naam, dan met een IP adres, geven we de client een naam. Met de variable ansible_host koppelen we deze naam aan het juiste IP adres.
-
-* Edit de file inventory:
+* Edit the file called inventory:
 
   ``$ vi inventory``
 
-* Vul de inventory file met de beide VM's (let op: vul bij X jouw user nummer in).
+* Fill the inventory file with both VM's (watch out: fill in your user number at the X).
 
   ```
   [workshop]
@@ -19,24 +18,24 @@ In de inventory file wordt beschreven hoe Ansible je clients kan bereiken. Een A
 
   ```
 
-## Task 1.2: Ansible vertellen waar de inventory file staat
-Ansible zoekt standaard in de volgende paden naar de inventory file:
+## Task 1.2: telling Ansible where to find the inventory file
+Ansible looks by default in the following path for the inventory file:
 
 * /etc/ansible/hosts
-  
-In het configuratie bestand ansible.cfg kan een alternatief pad geconfigueerd worden naar de inventory file. Ansible zoekt in de volgende paden naar de ansible.cfg:
 
-* ansible.cfg (in de huidige directory)
-* .ansible.cfg (in de home directory
+In the configuration file ansible.cfg, an alternative path can be configured for the inventory file. Ansible looks by default in the following paths to an ansible.cfg file:
+
+* ansible.cfg (in the current directory)
+* .ansible.cfg (in the current directory
 * /etc/ansible/ansible.cfg
 
-Door een ansible.cfg in dezelfde directory te zetten als het playbook (welke we in een later lab aanmaken), worden alle default instellingen overruled door de instellingen in deze ansible.cfg. We laten de inventory wijzen naar ~/inventory (de ~ is een alias voor je home directory; de plek waar de inventory file is aangemaakt). Nu we toch bezig zijn, configureren we alvast de user waarmee we straks via Ansible inloggen op de client. Gebruik de gegevens van jouw user. Verder schakelen we host_key_checking uit. 
+By creating an ansible.cfg file in the same directory as the playbook (which we will create in a later lab), all default settings will be overruled by this ansible.cfg. We will point the inventory to  ~/inventory (the ~ is an alias for your home directory; the location where we created the inventory file. While we are it, we will also configure the user we use to login to the client. Use the username provided to you. We will disable host_key_checking.
 
-* Maak een ansible.cfg aan:
+* create the file ansible.cfg:
 
   ``$ vi ansible.cfg``
 
-* Vul de ansible.cfg met (let op je usernummer):
+* Fill the ansible.cfg file with (watch for your user number):
   ```
   [defaults]
   inventory = ~/inventory
@@ -45,12 +44,12 @@ Door een ansible.cfg in dezelfde directory te zetten als het playbook (welke we 
   host_key_checking = False
   ```
 
-## Task 1.3: Test de werking
-Ansible werkt met modules. Voor bijna elke functie is wel een module te vinden. Voor het aanmaken van een gebruiker wordt bijvoorbeeld de module ``user`` gebruikt. In onze eerste stap met Ansible gaan we de module ``ping`` gebruiken. Met de module ``ping`` kun je de verbinding met je clients testen. Anders dan je gewend bent van de ping commando's van je Operating System (bijvoorbeeld Windows of Linux), test de ``ping`` module niet alleen of de client bereikbaar is (icmp reply), maar controleert of Ansible daadwerkelijk in kan loggen op de client (voor Linux clients logt Ansible in met SSH). Zie https://docs.ansible.com/ansible/latest/modules/ping_module.html#ping-module.
+## Task 1.3: Test if it works
+Ansible works with modules. For each funtion, there is module. For the creation of users we use the  ``user`` module. In our first steps we will use the ``ping`` module. This module makes it possible to check the connection from server to client. Otherwise then you might be used to (from the ping command on the operating system), this module does not only if your client is reachable (icmp reply) but also checks if Ansible can actually log on the the client with the provided credentials. Also see: https://docs.ansible.com/ansible/latest/modules/ping_module.html#ping-module.
 
-**Tip:** Een overzicht van alle modules is terug te vinden in de online documentatie van Ansible op: https://docs.ansible.com/ansible/latest/modules/list_of_all_modules.html.
+**Tip:** An overview of all modules can be found in the online documentation of Ansible: https://docs.ansible.com/ansible/latest/modules/list_of_all_modules.html.
 
-* Controleer of de inventory file en de ansible.cfg in je home directory staan:
+* Check if the inventory file and the ansible.cfg file are in your home directory: 
 
   ``$ ls``
 
@@ -58,7 +57,7 @@ Ansible werkt met modules. Voor bijna elke functie is wel een module te vinden. 
   ansible.cfg  inventory
   ```
   
-* Controleer of de Ansible module ``ping`` antwoord geeft:
+* Check if the Ansible module ``ping`` gives a correct answer:
 
   ``$ ansible --ask-pass -m ping workshop``
 
@@ -70,10 +69,8 @@ Ansible werkt met modules. Voor bijna elke functie is wel een module te vinden. 
   }
   ```
   
-**Tip:** In ons voorbeeld vraagt Ansible om een SSH password. In een geautomatiseerd scenario is het gebruikelijk om met SSH Autorized Keys te werken. In een later lab richten we de client in met Autorized keys, zodat Ansible direct, zonder wachtwoord, in kan loggen op de client. Omdat we nog geen Authorized keys hebben ingericht, geven we met ``--ask-pass`` de instructie om een SSH password te vragen.
+**Tip:** In our example, Ansible asks for an SSH password. In an automated scenario it's common to use with SSH Authorized Keys. In a later lab we will use this so Ansible can login directly, without password on the client. Because we do not have this set up yet, we give the ``--ask-pass`` instruction to ansible to ask for the SSH password.
 
-In de inventory file hebben we de groep [workshop] gedefineerd. De ``ping`` module zal daarom alle hosts controleren. In ons lab hebben we maar 1 host gedefineerd: ``client``. Als we meerdere hosts in de groep hadden gezet, zouden alle hosts antwoorden. 
+In the inventoy file we created the group [workshop]. The ``ping`` module will therefor check all hosts in that group. 
 
-**Tip:** Het is ook mogelijk om een enkele host te testen. Met ``ansible --ask-pass -m ping client`` wordt de module alleen maar op de host ``client`` uitgevoerd.
-
-Volgende stap: [Lab 02: Playbook - User aanmaken](/labs/02_NL_playbook_user.md)
+Next step: [Lab 02: Playbook - User creation](/labs/02_NL_playbook_user.md)
