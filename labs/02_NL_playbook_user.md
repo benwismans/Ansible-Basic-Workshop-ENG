@@ -1,5 +1,5 @@
 # Lab 2: Playbook - User configuration
-A playbook is a description of how a system should be configured. This playbook contains a list of steps. Every step checks the current condition and adjusts it, if necessary. If the system already matches the description of the step, Ansible does nothing.
+A playbook is a description of how a system should be configured. This playbook contains a list of steps. Every step checks the current condition and adjusts it, if necessary. If the system already matches the description of the step, Ansible does nothing. We call this idempotent.
 
 **Tip:** Try to create your playbook so no changes are made anymore, when the playbook is run for the 2nd time. It's usual to run a playbook multiple times without giving any issues.
 
