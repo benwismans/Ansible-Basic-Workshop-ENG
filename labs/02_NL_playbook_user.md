@@ -44,7 +44,7 @@ The playbook should be fairly readble. Even without Ansible knowledge, you shoul
 * The playbook will be executed on all clients in the group ``workshop``.
 * Het playbook contains one single task.
 * After ``name`` is a description of the task.
-* Te module ``authorized_key`` is used to install  the ``key`` for ``user`` ``userXX``. The file ``~/.ssh/id_rsa.pub`` is therefor used.
+* Te module ``authorized_key`` is used to install  the ``key`` for ``user`` ``userXX``. The file ``~/.ssh/id_rsa.pub`` is used for this.
 
 In the documentation you can find more details about the module ``authorized_key``. See https://docs.ansible.com/ansible/latest/modules/authorized_key_module.html.
 
