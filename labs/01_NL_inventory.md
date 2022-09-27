@@ -44,7 +44,7 @@ By creating an ansible.cfg file in the same directory as the playbook (which we 
   ```
 
 ## Task 1.3: Test if it works
-Ansible works with modules. For each funtion, there is a module. For the creation of users we use the  ``user`` module. In our first steps we will use the ``ping`` module. This module makes it possible to check the connection from server to client. Otherwise then you might be used to (from the ping command on the operating system), this module does not only if your client is reachable (icmp reply) but also checks if Ansible can actually log on the the client with the provided credentials. Also see: https://docs.ansible.com/ansible/latest/modules/ping_module.html#ping-module.
+Ansible works with modules. For each funtion, there is a module. For the creation of users we use the  ``user`` module. In our first steps we will use the ``ping`` module. This module makes it possible to check the connection from server to client. Different as you might be used to (from the ping command on the operating system), this module does not only check if your client is reachable (icmp reply) but also checks if Ansible can actually log on the the client with the provided credentials (using SSH by default on a Linux server). Also see: https://docs.ansible.com/ansible/latest/modules/ping_module.html#ping-module.
 
 **Tip:** An overview of all modules can be found in the online documentation of Ansible: https://docs.ansible.com/ansible/latest/modules/list_of_all_modules.html.
 
