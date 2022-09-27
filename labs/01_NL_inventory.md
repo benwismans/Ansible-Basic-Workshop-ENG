@@ -3,7 +3,7 @@ An essential part of Ansible is the inventory file. This file contains the envir
 
 ## Task 1.1: Inventory file creation
 In the inventory file are the hosts that can be reached with Ansible. An Ansible inventory works like a group, which can be put between square brackets
-[ and ]. Within the group all clients are written down. In our current example, we have only 1 host. 
+[ and ]. Within the group all clients are listed with either their DNS name or IP-address. In our current example, we have only 1 host. 
 
 * Edit the file called inventory:
 
