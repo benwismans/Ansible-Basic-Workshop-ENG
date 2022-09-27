@@ -5,7 +5,7 @@ A playbook is a description of how a system should be configured. This playbook 
 
 In this lab we create a playbook for installing the public key for SSH. After the installation of the public key, you can logon with your private key (without password) on the client system.
 
-**Tip:** In a production environment logging in with a private key without passphrase would mean a security risk. It's not advisable to use this setup in a production environment. But to make this lab less complex, we decided to do it anyway. In a production ansible environment, you can encrypt your passwords and passphrases with ansible vault or ansible tower (which is also one big vault).
+**Tip:** In a production environment logging in with a private key without passphrase would mean a security risk. It's not advisable to use this setup in a production environment. But to make this lab less complex, we decided to do it anyway. In a production ansible environment, you can encrypt your passwords and passphrases with ansible vault (shown in a later lab) or ansible tower (which is also one big vault).
 
 ## Task 2.1: Playbook creation
 In the playbook we will use the module ``authorized_key`` to install the SSH public key on the Client. The .ssh directory contains the private and public key created in Lab 0.
