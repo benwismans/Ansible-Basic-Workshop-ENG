@@ -13,7 +13,6 @@ In the inventory file are the hosts that can be reached with Ansible. An Ansible
 
   ```
   [workshop]
-  mst-ansible-training-userX-a.yxorp.nl 
   mst-ansible-training-userX-b.yxorp.nl
 
   ```
