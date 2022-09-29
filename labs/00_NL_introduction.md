@@ -17,10 +17,9 @@ For this workshop, you will need:
 - The output is alsow shown in a text block. For example:
   ```
   user@vm01:~ $ ls -l
-  total 3
-  -rw-r--r-- 1 pi pi   84 Feb 14 13:30 ansible.cfg
-  -rw-r--r-- 1 pi pi  979 Feb 14 17:07 brocade.yml
-  -rw-r--r-- 1 pi pi  884 Feb 14 22:07 cisco.yml
+  total 0
+  ..
+  .
   ```
   
  # Pre-check SSH-keys
