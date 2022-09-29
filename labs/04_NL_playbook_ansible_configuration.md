@@ -43,7 +43,7 @@ The last step is copy the SSH keypair to the 2nd system.
 
   ``$ ansible-playbook workshop.yml``
 
-## Task 4.3: Werking testen
+## Task 4.3: Test if it works
 If the playbook only returns "ok" results, it is time to login to the Client and check if the files are present.
 
 ```
