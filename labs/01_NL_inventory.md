@@ -9,7 +9,7 @@ In the inventory file are the hosts that can be reached with Ansible. An Ansible
 
   ``$ vi inventory``
 
-* Fill the inventory file with both VM's (watch out: fill in your user number at the X).
+* Fill the inventory file with the B VM, as that is where we are going to execute the Ansible code on (watch out: fill in your user number at the X).
 
   ```
   [workshop]
